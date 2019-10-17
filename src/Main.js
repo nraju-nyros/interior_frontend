@@ -8,9 +8,6 @@ import MyComponent4 from "./components/MyComponent4";
 import MyComponent5 from "./components/MyComponent5";
 import MyComponent6 from "./components/MyComponent6";
 
-// import { BrowserRouter, Switch , Route , Link} from 'react-router-dom';
-
-
 import './App.css';
 
 class Main extends Component {
@@ -126,18 +123,7 @@ class Main extends Component {
     });
   }
    
-  // componentDidMount() { 
-  //     setTimeout(() => this.setState({isLoading: false}), 2000)
-  //       console.log("componentDidMount");
-  //   }
-
-
   render() {
-    // if(this.state.isLoading){
-    //   return(
-    //    <Spinner/>
-    //   )
-    // }
     return ( 
 
       <div>
@@ -176,66 +162,3 @@ class Main extends Component {
 }
 
 export default Main;
-
-
-
-// import React, { Component } from 'react';
-// import 'bootstrap/dist/css/bootstrap.css';
-
-// import Home from "./components/Home";
-// import MyComponent1 from "./components/MyComponent1";
-// import MyComponent2 from "./components/MyComponent2";
-// import MyComponent3 from "./components/MyComponent3";
-// import MyComponent4 from "./components/MyComponent4";
-// // import Spinner from "./components/Spinner";
-// import './App.css';
-
-// class App extends Component {
-
-//   constructor(props) {
-//     super(props);
-//     this.state = {
-    
-//       page: 1       
-//     }
-//     this.nextPage = this.nextPage.bind(this)
-//     this.previousPage = this.previousPage.bind(this)
-   
-//   }
-
-
-//    nextPage() {
-//     console.log("nextPage")
-//     this.setState({ page: this.state.page + 1 })
-//   }
-
-//   previousPage() {
-//     this.setState({ page: this.state.page - 1 })
-//   }
-
- 
-
-
-//   render() {
-//     // if(this.state.isLoading){
-//     //   return(
-//     //    <Spinner/>
-//     //   )
-//     // }
-//        const { page } = this.state
-//     return ( 
-    
-//       <div>
-//         {page === 1 && <Home onClick={this.nextPage} /> }
-
-//         {page === 2 && <MyComponent1 onClick={this.nextPage} /> }
-//         }
-
-      
-
-//       </div>
-//     );
-//   }
-// }
-
-// export default App;

@@ -28,24 +28,24 @@ class ForgotPassword extends Component {
     this.setState({
       email: e.target.value
     },() => {
-              this.setState({
-                button :true,
-                success_msg: false
-              })
-               
-              const { name, value } = event.target;
-              let errors = this.state.errors;
+      this.setState({
+        button :true,
+        success_msg: false
+      })
+       
+      const { name, value } = event.target;
+      let errors = this.state.errors;
 
-              switch (name) {
-                case 'email': 
-                  errors.email = validEmailRegex.test(value)? '': '* Please enter a valid email address.';
-                  break;
-                
-                default:
-                  break;
-              }
-                this.setState({errors, [name]: value});
-            }); 
+      switch (name) {
+        case 'email': 
+          errors.email = validEmailRegex.test(value)? '': '* Please enter a valid email address.';
+          break;
+        
+        default:
+          break;
+      }
+        this.setState({errors, [name]: value});
+    }); 
   }
 
 
@@ -60,22 +60,23 @@ class ForgotPassword extends Component {
                     "email": email, 
                   };
 
-    axios.post("http://10.90.90.110:3000/api/v1/passwords/forgot", data, {
+    axios.post("http://10.90.90.110:3000/api/v1/passwords/forgot", data,{
                           headers: {
                               'Content-Type': 'application/json'
-                              
                           },    
-    }).then(response => {
-        if(response.status === 200){
-           this.setState({
-              success_msg :true
-            })
-        }    
-      }).catch((error) => {
-            this.setState({
-              button :false
-            })
-        });
+    })
+    .then(response => {
+      if(response.status === 200){
+         this.setState({
+            success_msg :true
+          })
+      }    
+    })
+    .catch((error) => {
+      this.setState({
+        button :false
+      })
+    });
   }
 
 

@@ -2,8 +2,6 @@ import React, { Component } from 'react';
 import 'bootstrap/dist/css/bootstrap.css';
 import web_icon from '../web_icon.svg';
 import cat_Plant from '../cat_Plant.svg';
-// import { BrowserRouter as Router, Switch , Route , Link} from 'react-router-dom';
-// import Login from "./Login";
 
 class Home extends Component { 
   constructor(props){

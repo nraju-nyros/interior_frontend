@@ -30,7 +30,7 @@ class MyComponent2 extends Component {
 
   logout() {
     localStorage.clear();
-   }
+  }
 
   componentDidMount(){
     if(localStorage.user_id){
@@ -65,18 +65,19 @@ class MyComponent2 extends Component {
         image_1: true, image_2: false,image_3: false, button:false,
         user_type:{id: id, image: image , name:name, image_1:true,image_2: false,image_3: false, button:false}
       },() => {
-                if(this.state.image_1=== true) {
-                  localStorage.setItem('user_type', JSON.stringify(this.state.user_type));
-                    setTimeout(
-                      function() {
-                        this.props.handleClick3();
-                      }
-                      .bind(this),600
-                    );
-                } else {
-                  localStorage.removeItem("user_type")   
-                } 
-              });
+
+        if(this.state.image_1=== true) {
+          localStorage.setItem('user_type', JSON.stringify(this.state.user_type));
+            setTimeout(
+              function() {
+                this.props.handleClick3();
+              }
+              .bind(this),600
+            );
+        } else {
+          localStorage.removeItem("user_type")   
+        } 
+      });
     }
       
     if(id === 2){
@@ -84,18 +85,19 @@ class MyComponent2 extends Component {
         image_1: false, image_2: true,image_3: false, button:false,
         user_type:{id: id, image: image , name:name, image_1:false,image_2: true,image_3: false, button:false}
       },() => {
-                if(this.state.image_2=== true) {
-                  localStorage.setItem('user_type', JSON.stringify(this.state.user_type));
-                    setTimeout(
-                      function() {
-                        this.props.handleClick3();
-                      }
-                      .bind(this),600
-                    );
-                } else {
-                  localStorage.removeItem("user_type")   
-                } 
-              });
+
+        if(this.state.image_2=== true) {
+          localStorage.setItem('user_type', JSON.stringify(this.state.user_type));
+            setTimeout(
+              function() {
+                this.props.handleClick3();
+              }
+              .bind(this),600
+            );
+        } else {
+          localStorage.removeItem("user_type")   
+        } 
+      });
     }
       
     if(id === 3){
@@ -103,18 +105,19 @@ class MyComponent2 extends Component {
         image_1: false, image_2: false,image_3: true, button:false,
         user_type:{id: id, image: image , name:name, image_1:false,image_2: false,image_3: true, button:false}
       },() => {
-                if(this.state.image_3=== true) {
-                  localStorage.setItem('user_type', JSON.stringify(this.state.user_type));
-                    setTimeout(
-                      function() {
-                        this.props.handleClick3();
-                      }
-                      .bind(this),600
-                    );
-                } else {
-                  localStorage.removeItem("user_type")   
-                } 
-              });
+        
+        if(this.state.image_3=== true) {
+          localStorage.setItem('user_type', JSON.stringify(this.state.user_type));
+            setTimeout(
+              function() {
+                this.props.handleClick3();
+              }
+              .bind(this),600
+            );
+        } else {
+          localStorage.removeItem("user_type")   
+        } 
+      });
     } 
   };
 

@@ -1362,10 +1362,10 @@ a:hover {
 
 
 .marble-background {
-  background-image: url('/assets/images/marble.jpg');
+  /*background-image: url('/assets/images/marble.jpg');*/
   background-size: cover;
   z-index: -2;
-  min-height: calc(115vh - 55px);
+  min-height: calc(100vh);
 }
 
 .registration-container {
@@ -1374,7 +1374,7 @@ a:hover {
     margin: 0 auto;
     width: 90%;
     display: flex;
-    padding-top: 85px;
+    padding-top: 40px;
    
     text-align: center;
 
@@ -1614,7 +1614,7 @@ input.form-control, select.form-control {
     top: 0;
     width: 100%;
     z-index: 100020;
-    position: fixed;
+    /*position: fixed;*/
 }
 
 .curtain .curtain-top-bar {

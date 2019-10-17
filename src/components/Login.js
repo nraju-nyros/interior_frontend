@@ -45,7 +45,8 @@ class Login extends Component {
       default:
         break;
     }
-     this.setState({errors, [name]: value});
+
+    this.setState({errors, [name]: value});
   }
 
   hideAlert = event => {
@@ -69,9 +70,9 @@ class Login extends Component {
                   };
 
     axios.post("http://10.90.90.110:3000/api/v1/auth/login",data,{
-                          headers:{
-                                    'Content-Type': 'application/json'
-                                  },    
+          headers:{
+                    'Content-Type': 'application/json'
+                  },    
     })
     .then(response => {
       console.log(response);
@@ -95,6 +96,7 @@ class Login extends Component {
       }   
     })
     .catch((error) => {
+      console.log(error, "error")
       this.setState({
         button :true
       })

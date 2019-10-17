@@ -157,7 +157,7 @@ class ResetPassword extends Component {
                               </div>
                           </div>
 
-                           <div className="infield-input" data-js-infield-label-input="">
+                          <div className="infield-input" data-js-infield-label-input="">
                              <div className="form-group confirmPassword">
                                  <input  ref={input => { this.secondInput = input }} onChange={this.handleChange} name="confirmPassword" placeholder="Confirm Password" className="form-control"  autoComplete="off" type="password" id="user-cpassword" required/>
                                   {this.state.match === false ? (

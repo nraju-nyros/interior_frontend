@@ -195,7 +195,7 @@ class MyComponent1 extends Component {
                   alt={image.alt}
                   effect="blur"
                   src={"http://10.90.90.110:3000"+ (image.name.url)} 
-                   className="img_button1" 
+                  className="img_button1" 
             />
             <div id={'image_'+image.id} className={this.state["image_"+image.id] ? "img_select img_select1 img_select3" : "img_select img_select1"}>
               <svg width="16" height="16" viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg">
@@ -275,7 +275,7 @@ class MyComponent1 extends Component {
                     <div className="next_btn">
                       <div className="next_btn1 next_btn2">
                         <button disabled={this.state.button} className={this.state.button ? "next_button"  : "next_button new"} 
-                          
+        
                             onClick={() => {
                                 this.props.handleClick2();
                                 this.saveRoomImages();
