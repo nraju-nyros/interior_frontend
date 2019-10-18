@@ -96,12 +96,6 @@ class ForgotPassword extends Component {
                           <img src={login_logo} alt="login_logo" className=""/> 
                       </a>
                     </div>
-                          
-                    <div className="curtain-hamburger">
-                      <span></span>
-                      <span></span>
-                      <span></span>
-                    </div>
                   </div>
                   
                   <div className="curtain-menu menu-hidden">

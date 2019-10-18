@@ -9,7 +9,6 @@ import 'react-lazy-load-image-component/src/effects/opacity.css';
 class MyComponent1 extends Component {
   constructor (props) {
     var get_img_ids = localStorage.getItem('image_ids') ? JSON.parse(localStorage.getItem('image_ids')) : [];
-    var image_type = localStorage.getItem('image_type') ? JSON.parse(localStorage.getItem('image_type')) : [];
     var user_id = JSON.stringify(localStorage.getItem('user_id'));
 
     super(props);
@@ -23,7 +22,6 @@ class MyComponent1 extends Component {
         button:true,
         img_counter:0,
         image_ids:get_img_ids,
-        image_type:image_type,
         user_id: user_id,
         login_button: true
     }
@@ -68,11 +66,7 @@ class MyComponent1 extends Component {
       })
     }
 
-     if(localStorage.image_type){
-      this.setState({
-        image_type: JSON.parse(localStorage.image_type)
-      })
-    }
+   
 
     var image_ids = localStorage.image_ids ? JSON.parse(localStorage.image_ids) : [];
     if(image_ids && image_ids !==undefined && image_ids.length > 0)  {
@@ -129,12 +123,7 @@ class MyComponent1 extends Component {
         this.setState({image_ids: arr1});
       }
 
-      var arr2 = [...this.state.image_type];
-      var index2 = arr2.indexOf(name);
-      if (index2 !== -1) {
-        arr2.splice(index2, 1);
-        this.setState({image_type: arr2});
-      }  
+     
 
       this.setState({
         img_counter: this.state.img_counter - 1
@@ -156,11 +145,7 @@ class MyComponent1 extends Component {
           image_ids:this.state.image_ids.concat(id)  
         });
 
-        setTimeout(()=> {
-          this.setState({
-              image_type: this.state.image_type.concat(this.state.values),
-            });
-        }) 
+       
 
         this.setState({
           img_counter: this.state.img_counter + 1
@@ -179,7 +164,7 @@ class MyComponent1 extends Component {
     if(this.state.room_value!== null) {
       localStorage.setItem('image_ids', JSON.stringify(this.state.image_ids));
       localStorage.setItem('img_counter', JSON.stringify(this.state.img_counter));
-      localStorage.setItem('image_type', JSON.stringify(this.state.image_type));
+     
     }  
   }
 

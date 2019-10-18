@@ -5,44 +5,64 @@ import web_icon from '../web_icon.svg';
 
 class MyComponent6 extends Component {
   constructor (props) {
-    var image_types = localStorage.getItem('image_type') ? JSON.parse(localStorage.getItem('image_type')) : [];
+    var get_img_ids = localStorage.getItem('image_ids') ? JSON.parse(localStorage.getItem('image_ids')) : [];
     super(props);
     this.state = {
       email: '',
-      images: image_types
+      images: get_img_ids,
+      rooms:[]
     }
     this.logout = this.logout.bind(this); 
   }
 
+  // onload set image_ids
   componentDidMount(){
-    var image_type = localStorage.getItem('image_type') ? JSON.parse(localStorage.getItem('image_type')) : [];
-    if(localStorage.image_type){
+    var get_img_ids = localStorage.getItem('image_ids') ? JSON.parse(localStorage.getItem('image_ids')) : [];
+    if(localStorage.image_ids){
       this.setState({
-        images: image_type
+        images: get_img_ids
       });
     }
+
+     fetch("http://10.90.90.110:3000/api/v1/room_images")
+      .then(rooms => rooms.json())
+      .then(
+        (result) => {
+          this.setState({
+            rooms: result
+          }); 
+          
+        },
+      )
   }
 
-
+  // clear user selected data 
   logout(){
     localStorage.removeItem('img_counter');
     localStorage.removeItem('counter');
     localStorage.removeItem('image_ids');
     localStorage.removeItem('room_ids');
-    localStorage.removeItem('image_type');
-    localStorage.removeItem('room_value');
-    
     location.href('/');
   }
 
-  
   render(){
-    var rooms = this.state.images
-    let items = rooms.map((image, imageIndex) => {
+    const {rooms} = this.state;
+    var rooms1 = this.state.images
+    var selected_images = [];
+
+    for(var i=0; i< rooms1.length ; i++){
+      for(var j=0; j< rooms.length ; j++){
+        if(rooms1[i] === rooms[j].id){
+          selected_images.push(rooms[j])
+        }
+      }
+    }
+
+    let items = selected_images.map((image, imageIndex) => {
       return ( 
         <div className="card" key={ imageIndex }>
           <button  className="result_images img_button" data-automated-test="styleQuizImage" type="button">
-            <img alt=""  className="img_button1" src={"http://10.90.90.110:3000"+ (image.image.url)} />     
+            <img alt=""  className="img_button1" src={"http://10.90.90.110:3000"+(image.name.url)} />
           </button>
         </div>
       );

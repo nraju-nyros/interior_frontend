@@ -4,14 +4,12 @@ import web_icon from '../web_icon.svg';
 
 class MyComponent3 extends Component {
   constructor (props) {
-    var getRoomContents = localStorage.getItem('room_value') ? JSON.parse(localStorage.getItem('room_value')) : [];
     var getRoom_ids = localStorage.getItem('room_ids') ? JSON.parse(localStorage.getItem('room_ids')) : [];
     super(props);
     this.state = {
       counter:0,
       button:true,
       room_types:[],
-      room_value:getRoomContents,
       room_ids:getRoom_ids,
       values:{},
       login_button: true
@@ -30,13 +28,7 @@ class MyComponent3 extends Component {
         [room_id]: false
       });
 
-      var array = [...this.state.room_value];
-      var index = array.indexOf(content)
-      if (index !== -1) {
-        array.splice(index, 1);
-        this.setState({room_value: array});
-      } 
-
+     
       var arr = [...this.state.room_ids];
       var index1 = arr.indexOf(id);
       if (index1 !== -1) {
@@ -68,11 +60,7 @@ class MyComponent3 extends Component {
         room_ids:this.state.room_ids.concat(id)
       });
 
-      setTimeout(()=> {
-        this.setState({
-          room_value:this.state.room_value.concat(this.state.values)
-        });
-      }) 
+      
 
       this.setState({
         counter: this.state.counter + 1,
@@ -90,7 +78,7 @@ class MyComponent3 extends Component {
 
   saveRoomType() {
     if(this.state.room_value!== null) {
-      localStorage.setItem('room_value', JSON.stringify(this.state.room_value));
+   
       localStorage.setItem('room_ids', JSON.stringify(this.state.room_ids));
       localStorage.setItem('counter', JSON.stringify(this.state.counter));
     }  

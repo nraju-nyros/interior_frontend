@@ -82,15 +82,16 @@ class MyComponent5 extends Component {
     var user_local = JSON.parse(localStorage.getItem('user_type'));
     var name = JSON.parse(localStorage.getItem('name'));
     var email = JSON.parse(localStorage.getItem('email'));
-    var image_type = localStorage.getItem('image_type') ? JSON.parse(localStorage.getItem('image_type')) : [];
-    var getRoomContents = localStorage.getItem('room_value') ? JSON.parse(localStorage.getItem('room_value')) : [];
     var user_type_name = user_local.name
 
+    var get_img_ids = localStorage.getItem('image_ids') ? JSON.parse(localStorage.getItem('image_ids')) : [];
+    var getRoom_ids = localStorage.getItem('room_ids') ? JSON.parse(localStorage.getItem('room_ids')) : [];
+
+
     var image_types = [];  
-    for(var i=0;i<image_type.length;i++) {
+    for(var i=0;i<get_img_ids.length;i++) {
       var x = {
-        name: image_type[i].image.url.slice(20),
-        room_image_id: image_type[i].id
+        room_image_id: get_img_ids[i]
 
       }
       image_types.push(x)
@@ -98,11 +99,10 @@ class MyComponent5 extends Component {
     }
      
     var roomContents = [];  
-    for(var j=0;j<getRoomContents.length;j++) {
+    for(var j=0;j<getRoom_ids.length;j++) {
       var y = {
-        name: getRoomContents[j].image.url.slice(19),
-        content: getRoomContents[j].content,
-        room_type_id: getRoomContents[j].id
+  
+        room_type_id: getRoom_ids[j]
       }
       roomContents.push(y)
     }

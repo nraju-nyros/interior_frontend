@@ -23,7 +23,7 @@ class SignUp extends Component {
     }
   }
 
-
+  // onchange jquery validations for user signup form
   handleChange = (event) => {
     const { name, value } = event.target;
     let errors = this.state.errors;
@@ -47,12 +47,14 @@ class SignUp extends Component {
     this.setState({errors, [name]: value});
   }
 
+  // Alert Error message hide 
   hideAlert = event => {
     this.setState({
       button: false
     });
   }
 
+  // user signup 
   handleSubmit  = event =>  {
     event.preventDefault();
 
@@ -101,12 +103,6 @@ class SignUp extends Component {
                           <img src={login_logo} alt="login_logo" className=""/>
                       </a>
                     </div>
-                          
-                    <div className="curtain-hamburger">
-                      <span></span>
-                      <span></span>
-                      <span></span>
-                    </div>
                   </div>
                   
                   <div className="curtain-menu menu-hidden">
@@ -118,6 +114,7 @@ class SignUp extends Component {
                     </ul>
                   </div>
                 </div>
+                
 
                 { this.state.button? 
                   <div  className="alert alert-danger text-center alert-dismissable fade in" >
@@ -129,6 +126,7 @@ class SignUp extends Component {
                 }
                 <section className="marble-background">
                   <div className="registration-container">
+
                     <div className="registration-aside registration-aside-no-padding sign_up_">
                       <div className="registration-aside-content">
                         <img alt="" className="registration-aside-image loading" src="https://s3.amazonaws.com/static.havenly.com/content/signup-and-login/aside-ez-signup.jpg" data-was-processed="true"/>
@@ -157,58 +155,53 @@ class SignUp extends Component {
                     <div className="onboarding-form">
                       <h1 className="sign-up-for-havenly">Sign Up for Havenly</h1>
                       <h3 className="everyone-deserves">Everyone deserves a beautiful home.</h3>
-                        <form onSubmit={this.handleSubmit}>
-                          <div >
-                            <input type="hidden" name="_method" value="POST"/>
+
+                      <form onSubmit={this.handleSubmit}>
+                        <div >
+                          <input type="hidden" name="_method" value="POST"/>
+                        </div>
+
+                        <div className="infield-input" data-js-infield-label-input="">
+                          <div className="form-group fullName">
+                            <input  onChange={this.handleChange} name="fullName" placeholder="Name" className="form-control" id="user-name"  autoComplete="off" maxLength="128" type="name" required/>
+                           {errors.fullName.length > 0 && 
+                            <span className='error'>{errors.fullName}</span>}
                           </div>
+                        </div>
 
-                          <div className="infield-input" data-js-infield-label-input="">
-                            <div className="form-group fullName">
-                              <input  onChange={this.handleChange} name="fullName" placeholder="Name" className="form-control" id="user-name"  autoComplete="off" maxLength="128" type="name" required/>
-                             {errors.fullName.length > 0 && 
-                              <span className='error'>{errors.fullName}</span>}
-                            </div>
+                        <div className="infield-input" data-js-infield-label-input="">
+                          <div className="form-group email">
+                            <input   onChange={this.handleChange} name="email" className="form-control" id="user-email"  autoComplete="off" maxLength="128"  placeholder="Email" required/>
+                              {errors.email.length > 0 && 
+                              <span className='error'>{errors.email}</span>}
                           </div>
+                        </div>
 
-                          <div className="infield-input" data-js-infield-label-input="">
-                            <div className="form-group email">
-          
-                              <input   onChange={this.handleChange} name="email" className="form-control" id="user-email"  autoComplete="off" maxLength="128"  placeholder="Email" required/>
-                                {errors.email.length > 0 && 
-                                <span className='error'>{errors.email}</span>}
-
-                            </div>
-                          </div>
-
-                          <div className="infield-input" data-js-infield-label-input="">
-                            <div className="form-group password">
-                             
-                              <input   onChange={this.handleChange} name="password" placeholder="Password" className="form-control"  autoComplete="off" type="password" id="user-password" required/>
-                               {errors.password.length > 0 && 
-                              <span className='error'>{errors.password}</span>}
-
-                            </div>            
-                          </div>
-
-                          <div className="text-left">
-                            <a href="/forgot_password" className="accent light-link password-reset">Forgot your password?</a> 
-                          </div>
-
-                          <input type="hidden" name="data[User][timezone]" id="timezone" value="Asia/Kolkata"/>            <input type="hidden" name="csrf_token" value="de5c5d034dd6e31af7d89cc778e06341410b2e041aa0888331de9b22ceb0eb66"/>
-                          <input type="hidden" name="data[User][experiment_variations]" id="activeVariations" value=""/>
-                          <input type="hidden" name="data[User][preferred_designer_id]" id="preferredDesigner"/>
-
-                          <div className="form-group">
-                            <div className="text-center">
-                            <input className="form-submit btn btn-primary login-button register-submit" title="Click here to Sign Up" type="submit" value="Sign Up"/>
-                            </div>
+                        <div className="infield-input" data-js-infield-label-input="">
+                          <div className="form-group password">
+                            <input   onChange={this.handleChange} name="password" placeholder="Password" className="form-control"  autoComplete="off" type="password" id="user-password" required/>
+                             {errors.password.length > 0 && 
+                            <span className='error'>{errors.password}</span>}
                           </div>            
-                        </form>
-                        <p className="already-user">
-                           Already have an account?
-                            <a className="sign-in" href="/login">Sign In</a>
-                        </p>
+                        </div>
+
+                        <div className="text-left">
+                          <a href="/forgot_password" className="accent light-link password-reset">Forgot your password?</a> 
+                        </div>
+
+                        <div className="form-group">
+                          <div className="text-center">
+                              <input className="form-submit btn btn-primary login-button register-submit" title="Click here to Sign Up" type="submit" value="Sign Up"/>
+                          </div>
+                        </div>    
+
+                      </form>
+
+                      <p className="already-user">Already have an account?
+                        <a className="sign-in" href="/login">Sign In</a>
+                      </p>
                     </div>
+                    
                   </div>
                 </section>
 

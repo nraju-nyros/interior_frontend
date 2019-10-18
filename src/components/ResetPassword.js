@@ -7,18 +7,19 @@ class ResetPassword extends Component {
   constructor (props) {
     super(props);
     this.state = {
+      password: '',
+      confirmPassword: '',
+      button: true,
+      errors: {
         password: '',
-        confirmPassword: '',
-        button: true,
-        errors: {
-          password: '',
-          confirmPassword: ''
-        },
-        match: false
+        confirmPassword: ''
+      },
+      match: false
     } 
     this.handleSubmit = this.handleSubmit.bind(this) 
   }
 
+  // On change jquery validations
   handleChange = event => {
     const { name, value } = event.target;
     let errors = this.state.errors;
@@ -53,16 +54,19 @@ class ResetPassword extends Component {
     }
   }
   
+  // On load find user_reset_password_token by url
   componentDidMount(){
     const query = new URLSearchParams(this.props.location.search);
     const token = query.get('reset_password_token')
     console.log(token)//123  
   }
 
+  // Redirect login page
   success(){
    window.location.href = 'http://10.90.90.110:8000/login';
   }
-
+  
+  //Password update onclick
   handleSubmit = (e) => {
     e.preventDefault()
 
@@ -117,12 +121,6 @@ class ResetPassword extends Component {
                         <img src={login_logo} alt="login_logo" className=""/> 
                       </a>
                     </div>
-                          
-                    <div className="curtain-hamburger">
-                      <span></span>
-                      <span></span>
-                      <span></span>
-                    </div>
                   </div>
                   
                   <div className="curtain-menu menu-hidden">
@@ -147,42 +145,42 @@ class ResetPassword extends Component {
                       <h1 className="sign-up-for-havenly">Create a new Password</h1>
                       <h3 className="everyone-deserves">Password must have more than 6 characters.</h3>
 
-                        <form onSubmit={this.handleSubmit}>
-            
-                          <div className="infield-input" data-js-infield-label-input="">
-                             <div className="form-group password">
-                                <input ref={input => { this.firstInput = input }} onChange={this.handleChange} name="password" placeholder="Password" className="form-control"  autoComplete="off" type="password" id="user-password" required/>
-                                 {errors.password.length > 0 && 
-                                <span className='error'>{errors.password}</span>}
-                              </div>
+                      <form onSubmit={this.handleSubmit}>
+          
+                        <div className="infield-input" data-js-infield-label-input="">
+                          <div className="form-group password">
+                            <input ref={input => { this.firstInput = input }} onChange={this.handleChange} name="password" placeholder="Password" className="form-control"  autoComplete="off" type="password" id="user-password" required/>
+                               {errors.password.length > 0 && 
+                              <span className='error'>{errors.password}</span>}
                           </div>
+                        </div>
 
-                          <div className="infield-input" data-js-infield-label-input="">
-                             <div className="form-group confirmPassword">
-                                 <input  ref={input => { this.secondInput = input }} onChange={this.handleChange} name="confirmPassword" placeholder="Confirm Password" className="form-control"  autoComplete="off" type="password" id="user-cpassword" required/>
-                                  {this.state.match === false ? (
-                                      <span className='error' >Passwords Must Match</span>
-                                  ):(
-                                    <span className='error' style={{ color: 'green' }}>Passwords Match!</span>
-                                    )}
-                              </div>
+                        <div className="infield-input" data-js-infield-label-input="">
+                          <div className="form-group confirmPassword">
+                            <input  ref={input => { this.secondInput = input }} onChange={this.handleChange} name="confirmPassword" placeholder="Confirm Password" className="form-control"  autoComplete="off" type="password" id="user-cpassword" required/>
+                              {this.state.match === false ? (
+                                   <span className='error' >Passwords Must Match</span>
+                                ):(
+                                  <span className='error' style={{ color: 'green' }}>Passwords Match!</span>
+                                  )}
                           </div>
+                        </div>
 
-                          <div className="form-group">
-                            <div className="text-center">
-                                <input id="reset-password-btn" disabled={!this.state.match}className="form-submit btn btn-primary register-submit" title="Reset Your Password" value="Reset Your Password" type="submit"/>
-                            </div>
+                        <div className="form-group">
+                          <div className="text-center">
+                            <input id="reset-password-btn" disabled={!this.state.match}className="form-submit btn btn-primary register-submit" title="Reset Your Password" value="Reset Your Password" type="submit"/>
                           </div>
+                        </div>
 
-                          <div className="reset-success-block">
-                            <div className="empty-append"></div>
-                          </div>
+                        <div className="reset-success-block">
+                          <div className="empty-append"></div>
+                        </div>
 
-                          <div className="sign-in-links">
-                            <a href="/login">Sign In </a>&nbsp;<span className="no-underline"> | </span>&nbsp;
-                            <a href="/signup">Sign Up</a>
-                          </div>
-                        </form>
+                        <div className="sign-in-links">
+                          <a href="/login">Sign In </a>&nbsp;<span className="no-underline"> | </span>&nbsp;
+                          <a href="/signup">Sign Up</a>
+                        </div>
+                      </form>
                     </div>
                   </div>
                 </section>
